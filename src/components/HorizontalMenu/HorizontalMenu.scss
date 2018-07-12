@@ -1,0 +1,180 @@
+@import "../../utils/utils";
+$lineHeightMenu : 64px;
+
+
+.ant-layout-header {
+  height: $zeroPX;
+}
+.HorizontalMenu {
+  line-height: $lineHeightMenu;
+  @include flex();
+  @include justify-content(flex-end);
+}
+
+$menu-box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.15);
+
+.main-menu {
+  font-size: 1rem;
+  @media screen and (max-width: map-get($grid-breakpoints, lg)) {
+    font-size: .8rem;
+  }
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    &--upper {
+      background: white;
+      box-shadow: $menu-box-shadow;
+    }
+    &--lower {
+      overflow: hidden;
+      padding-bottom: 15px;
+    }
+  }
+  &__upper {
+    width: 100%;
+    @media screen and (min-width: map-get($grid-breakpoints, lg)) {
+      max-width: map-get($container-max-widths, lg);
+    }
+    @media screen and (min-width: map-get($grid-breakpoints, xl)) {
+      max-width: map-get($container-max-widths, xl);
+    }
+    @media screen and (min-width: map-get($grid-breakpoints, xxl)) {
+      max-width: map-get($container-max-widths, xxl);
+    }
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    &__logo {
+      position: relative;
+      width: 100px;
+      & > img {
+        position: absolute;
+        box-shadow: $menu-box-shadow;
+        width: 100%;
+        height: auto;
+        border-radius: 100%;
+      }
+    }
+    & .main-menu__links--left {
+      & > ul {
+        padding-left: 100px;
+      }
+    }
+  }
+  &__links {
+    & > ul {
+      height: 50px;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      & > li {
+        margin: 0 1rem;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+  &__lower {
+    & * {
+      color: white;
+    }
+    &--professor {
+      background: #f7323f;
+    }
+    &--student {
+      background: #0047ba;
+    }
+    margin-left: 50px;
+    width: 100vw;
+    display: flex;
+    box-shadow: 0px 4px 16px rgba(0,0,0,.16);
+    &__wrapper {
+      width: 100%;
+      @media screen and (min-width: map-get($grid-breakpoints, lg)) {
+        max-width: map-get($container-max-widths, lg);
+      }
+      @media screen and (min-width: map-get($grid-breakpoints, xl)) {
+        max-width: map-get($container-max-widths, xl);
+      }
+      @media screen and (min-width: map-get($grid-breakpoints, xxl)) {
+        max-width: map-get($container-max-widths, xxl);
+      }
+      margin: auto;
+    }
+    & .main-menu__links--left {
+      & > ul {
+        padding-left: 50px;
+      }
+    }
+  }
+  &__user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
+    padding-right: 34px;
+    border-right: 2px solid gray;
+    &__photo {
+      height: 30px;
+      width: auto;
+      border-radius: 100%;
+      margin: 5px;
+    }
+  }
+  .hamburger {
+    display: none;
+    &__input {
+      display: none;
+    }
+  }
+  @media screen and (max-width: map-get($grid-breakpoints, md)) {
+    font-size: 1rem;
+    .hamburger {
+      display: block;
+      width: 20px;
+      align-self: center;
+      cursor: pointer;
+    }
+    .main-menu{
+      &__upper {
+        flex-direction: column;
+      }
+      &__links {
+        & > ul {
+          display: none;
+        }
+      }
+      &__user {
+        border: 0;
+        margin: 0;
+        padding: 0;
+      }
+    }
+    #burger-shower:checked ~ .main-menu__links {
+      & > ul {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 0;
+        & > li {
+          margin: 0 1rem;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+}
